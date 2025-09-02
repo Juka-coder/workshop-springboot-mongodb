@@ -15,6 +15,9 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserResource {
 
+
+
+
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
         User maria =  new User("1", "maria silva", "maria@gmail.com");
