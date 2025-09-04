@@ -1,6 +1,7 @@
 package com.github.juka_coder.workshopmongo.resources;
 
 import com.github.juka_coder.workshopmongo.DTO.UserDTO;
+import com.github.juka_coder.workshopmongo.domain.Post;
 import com.github.juka_coder.workshopmongo.domain.User;
 import com.github.juka_coder.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,11 @@ public class UserResource {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
